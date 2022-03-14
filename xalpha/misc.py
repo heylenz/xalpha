@@ -214,13 +214,13 @@ def get_cb_historical_from_ttjj(code):
 def get_fund_list(ft):
     # hh, zq, zs, gp, qdii, fof
     r = rget(
-        "http://fund.eastmoney.com/data/FundGuideapi.aspx?\
+        "https://fund.eastmoney.com/data/FundGuideapi.aspx?\
 dt=0&ft={ft}&sd=&ed=&sc=z&st=desc&pi=1&pn=10000&zf=diy&sh=list".format(
             ft=ft
         ),
         headers={
             "Host": "fund.eastmoney.com",
-            "Referer": "http://fund.eastmoney.com/daogou/",
+            "Referer": "https://fund.eastmoney.com/daogou/",
         },
     )
     d = eval(r.text.split("=")[1].replace("null", "None"))

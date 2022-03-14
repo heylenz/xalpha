@@ -119,7 +119,7 @@ class FundReport:
                 id_=self.report_list[no]["ID"]
             )
 
-            # report_url = "http://fund.eastmoney.com/gonggao/{code},{id_}.html".format(
+            # report_url = "https://fund.eastmoney.com/gonggao/{code},{id_}.html".format(
             #     code=self.code, id_=self.report_list[no]["ID"]
             # )
             # r = rget(report_url)
@@ -541,10 +541,10 @@ class fundinfo(basicinfo):
             )
         code = code.zfill(6)  # 1234 is the same as 001234
         self._url = (
-            "http://fund.eastmoney.com/pingzhongdata/" + code + ".js"
+            "https://fund.eastmoney.com/pingzhongdata/" + code + ".js"
         )  # js url api for info of certain fund
         self._feeurl = (
-            "http://fund.eastmoney.com/f10/jjfl_" + code + ".html"
+            "https://fund.eastmoney.com/f10/jjfl_" + code + ".html"
         )  # html url for trade fees info of certain fund
         self.priceonly = priceonly
 
@@ -939,7 +939,7 @@ class fundinfo(basicinfo):
         ):  ## for some QDII, this value is 1, anyways, trying update is compatible (d+2 update)
             return None
         self._updateurl = (
-            "http://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code="
+            "https://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code="
             + self.code
             + "&page=1&per=1"
         )
@@ -950,7 +950,7 @@ class fundinfo(basicinfo):
             diffdays += 1
         if diffdays <= 10:
             self._updateurl = (
-                "http://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code="
+                "https://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code="
                 + self.code
                 + "&page=1&per="
                 + str(diffdays)
@@ -964,7 +964,7 @@ class fundinfo(basicinfo):
             items = []
             for pg in range(1, int(diffdays / 10) + 2):
                 self._updateurl = (
-                    "http://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code="
+                    "https://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code="
                     + self.code
                     + "&page="
                     + str(pg)
@@ -1382,7 +1382,7 @@ class mfundinfo(basicinfo):
         if code.startswith("M") and code[1:].isdigit():
             code = code[1:]
         code = code.zfill(6)
-        self._url = "http://fund.eastmoney.com/pingzhongdata/" + code + ".js"
+        self._url = "https://fund.eastmoney.com/pingzhongdata/" + code + ".js"
         self.rate = 0
         super().__init__(
             code,
@@ -1509,7 +1509,7 @@ class mfundinfo(basicinfo):
         if diffdays == 0:
             return None
         self._updateurl = (
-            "http://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code="
+            "https://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code="
             + self.code
             + "&page=1&per=1"
         )
@@ -1521,7 +1521,7 @@ class mfundinfo(basicinfo):
         if diffdays <= 10:
             # caution: there may be today data!! then a day gap will be in table
             self._updateurl = (
-                "http://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code="
+                "https://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code="
                 + self.code
                 + "&page=1&per="
                 + str(diffdays)
@@ -1535,7 +1535,7 @@ class mfundinfo(basicinfo):
             items = []
             for pg in range(1, int(diffdays / 10) + 2):
                 self._updateurl = (
-                    "http://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code="
+                    "https://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code="
                     + self.code
                     + "&page="
                     + str(pg)

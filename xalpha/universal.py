@@ -1541,7 +1541,7 @@ def get_newest_netvalue(code):
     :return: netvalue, %Y-%m-%d
     """
     code = code[1:]
-    r = rget("http://fund.eastmoney.com/{code}.html".format(code=code))
+    r = rget("https://fund.eastmoney.com/{code}.html".format(code=code))
     s = BeautifulSoup(r.text, "lxml")
     return (
         float(
@@ -1611,7 +1611,7 @@ def get_rt_from_ttjj(code):
     code = code[1:]
     if code.startswith("96"):
         return get_rt_from_ttjj_oversea(code)
-    r = rget("http://fund.eastmoney.com/{code}.html".format(code=code))
+    r = rget("https://fund.eastmoney.com/{code}.html".format(code=code))
     r.encoding = "utf-8"
     s = BeautifulSoup(r.text, "lxml")
     name = s.select("div[style='float: left']")[0].text.split("(")[0]
@@ -1637,7 +1637,7 @@ def get_rt_from_ttjj(code):
                     "http://fundgz.1234567.com.cn/js/{code}.js".format(code=code),
                     headers={
                         "Host": "fundgz.1234567.com.cn",
-                        "Referer": "http://fund.eastmoney.com/",
+                        "Referer": "https://fund.eastmoney.com/",
                     },
                 )
                 try:  # in case eval error
